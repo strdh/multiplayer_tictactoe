@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      flex-direction: column;
+      /* Added to stack the elements vertically */
+    }
+
+    #info {
+      width: calc(100% - 20px);
+      max-width: 45%;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    #tic-tac-toe {
+      display: grid;
+      grid-template-columns: repeat(3, 120px);
+      grid-template-rows: repeat(3, 120px);
+      gap: 5px;
+      width: 100%;
+      /* Set width to 100% for responsiveness */
+      max-width: 400px;
+      /* Set a max-width for better readability */
+    }
+
+    .cell {
+      width: 120px;
+      height: 120px;
+      border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      cursor: pointer;
+    }
+
+    .cell:hover {
+      background-color: #f0f0f0;
+    }
+
+    #btnReset {
+      background-color: rgb(230, 171, 122);
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      color: black;
+      padding: 1ch;
+      width: 100%;
+      /* Set width to 100% for responsiveness */
+    }
+
+    #btnReset:hover {
+      background-color: #df8383;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="info">
+    <ul>
+      <li>Plauer</li>
+      <li>Puber</li>
+    </ul>
+    <a href="#" id="btnReset">Reset</a>
+  </div>
+
+  <div id="tic-tac-toe">
+    <div id="b0" class="cell" data-index="0"></div>
+    <div id="b1" class="cell" data-index="1"></div>
+    <div id="b2" class="cell" data-index="2"></div>
+    <div id="b3" class="cell" data-index="3"></div>
+    <div id="b4" class="cell" data-index="4"></div>
+    <div id="b5" class="cell" data-index="5"></div>
+    <div id="b6" class="cell" data-index="6"></div>
+    <div id="b7" class="cell" data-index="7"></div>
+    <div id="b8" class="cell" data-index="8"></div>
+  </div>
+
+
+  <script>
+    var boxes = document.getElementsByClassName("cell");
+
+    for (var i = 0; i < boxes.length; i++) {
+      let current = boxes[i];
+      current.addEventListener('click', function () {
+        let content = this.textContent;
+        if (content === "" || content === "O") {
+          this.textContent = "X";
+        } else {
+          this.textContent = "O";
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>
