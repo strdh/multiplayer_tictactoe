@@ -6,37 +6,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #388087;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
       margin: 0;
       flex-direction: column;
-      /* Added to stack the elements vertically */
+      background-color: #f6f6f2;
     }
 
     #info {
-      width: calc(100% - 20px);
-      max-width: 45%;
-      border: 1px solid #ccc;
-      margin-bottom: 10px;
+      max-width: 600px;
+      min-width: 400px;
+      border: 1px solid #388087;
+      margin-bottom: 1rem;
+    }
+
+    .conn {
+      padding: 2px;
+      background-color: #c2edce;
+    }
+
+    .lostConn {
+      padding: 2px;
+      background-color: #FD7484;
     }
 
     #tic-tac-toe {
-      display: grid;
-      grid-template-columns: repeat(3, 120px);
-      grid-template-rows: repeat(3, 120px);
-      gap: 5px;
-      width: 100%;
-      /* Set width to 100% for responsiveness */
-      max-width: 400px;
-      /* Set a max-width for better readability */
+      max-width: 600px;
+	    max-height: 600px;
+      background-color: #ffffff;
+      border: 6px solid #388087;
+	    display: grid;
+	    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     }
 
     .cell {
       width: 120px;
       height: 120px;
-      border: 1px solid #ccc;
+      border: 1px solid #c2edce;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -48,30 +58,55 @@
       background-color: #f0f0f0;
     }
 
-    #btnReset {
-      background-color: rgb(230, 171, 122);
-      text-decoration: none;
-      text-align: center;
-      border: none;
-      color: black;
-      padding: 1ch;
+    .button {
       width: 100%;
-      /* Set width to 100% for responsiveness */
+      margin: 5px;
+      display: inline-block;
+      padding: 5px 10px;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      background-color: #ffffff;
+      
+      border: 2px solid #388087;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     }
 
-    #btnReset:hover {
-      background-color: #df8383;
+    .button:hover {
+      background-color: #f6f6f2;
+    }
+
+    #btnGroup {
+      display: flex;
+      width: 95%;
+      background-color: #c2edce;
+      margin: 0 auto;
     }
   </style>
 </head>
 
 <body>
   <div id="info">
-    <ul>
-      <li>Plauer</li>
-      <li>Puber</li>
-    </ul>
-    <a href="#" id="btnReset">Reset</a>
+    <table>
+      <tr>
+        <td>Player 1</td>
+        <td>:</td>
+        <td>0</td>
+        <td class="conn">Connected</td>
+      </tr>
+      <tr>
+        <td>Player 2</td>
+        <td>:</td>
+        <td>5</td>
+        <td class="lostConn">Lost Connection</td>
+      </tr>
+    </table>
+    <div id="btnGroup">
+      <a class="button">Jaa</a>
+      <a class="button">Jaa</a>
+      <a class="button">Jaa</a>
+    </div>
   </div>
 
   <div id="tic-tac-toe">
