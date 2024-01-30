@@ -1,0 +1,103 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #388087;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+  background-color: #f6f6f2;
+}
+
+#info {
+  max-width: 600px;
+  min-width: 400px;
+  border: 1px solid #388087;
+  margin-bottom: 1rem;
+}
+
+.conn {
+  width: 150px;
+  padding: 2px;
+  background-color: #c2edce;
+}
+
+.lostConn {
+  width: 150px;
+  padding: 2px;
+  background-color: #FD7484;
+}
+
+.scoreTable {
+  width: 100%;
+  border: 1px solid #c2edce;
+}
+
+.scoreTable td {
+  padding: 10px;
+}
+
+.scoreTable .score {
+  border: 1px solid #c2edce;
+}
+
+.scoreTable .scoreNum {
+  background-color: #ffffff;
+}
+
+.scoreTable .round {
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+#tic-tac-toe {
+  max-width: 600px;
+  max-height: 600px;
+  background-color: #ffffff;
+  border: 6px solid #388087;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+}
+
+.cell {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #c2edce;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: #f0f0f0;
+}
+
+.button {
+  width: 100%;
+  margin: 5px;
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #ffffff;
+
+  border: 2px solid #388087;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.button:hover {
+  background-color: #f6f6f2;
+}
+
+#btnGroup {
+  display: flex;
+  width: 95%;
+  background-color: #c2edce;
+  margin: 0 auto;
+}

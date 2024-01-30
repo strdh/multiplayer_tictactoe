@@ -4,106 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #388087;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      flex-direction: column;
-      background-color: #f6f6f2;
-    }
-
-    #info {
-      max-width: 600px;
-      min-width: 400px;
-      border: 1px solid #388087;
-      margin-bottom: 1rem;
-    }
-
-    .conn {
-      padding: 2px;
-      background-color: #c2edce;
-    }
-
-    .lostConn {
-      padding: 2px;
-      background-color: #FD7484;
-    }
-
-    #tic-tac-toe {
-      max-width: 600px;
-	    max-height: 600px;
-      background-color: #ffffff;
-      border: 6px solid #388087;
-	    display: grid;
-	    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    }
-
-    .cell {
-      width: 120px;
-      height: 120px;
-      border: 1px solid #c2edce;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      cursor: pointer;
-    }
-
-    .cell:hover {
-      background-color: #f0f0f0;
-    }
-
-    .button {
-      width: 100%;
-      margin: 5px;
-      display: inline-block;
-      padding: 5px 10px;
-      font-size: 16px;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      background-color: #ffffff;
-      
-      border: 2px solid #388087;
-      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    }
-
-    .button:hover {
-      background-color: #f6f6f2;
-    }
-
-    #btnGroup {
-      display: flex;
-      width: 95%;
-      background-color: #c2edce;
-      margin: 0 auto;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div id="info">
-    <table>
+    <table class="scoreTable">
       <tr>
-        <td>Player 1</td>
-        <td>:</td>
-        <td>0</td>
-        <td class="conn">Connected</td>
+        <td class="conn">connected</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="lostConn">lost connection</td>
       </tr>
       <tr>
-        <td>Player 2</td>
-        <td>:</td>
-        <td>5</td>
-        <td class="lostConn">Lost Connection</td>
+        <td class="score">username1</td>
+        <td class="scoreNum">0</td>
+        <td class="scoreNum">-</td>
+        <td class="scoreNum">5</td>
+        <td class="score">username2</td>
+      </tr>
+      <tr>
+        <td class="score round" colspan="5">Round: <span>10</span></td>
       </tr>
     </table>
     <div id="btnGroup">
-      <a class="button">Jaa</a>
+      <a class="button">Close</a>
       <a class="button">Jaa</a>
       <a class="button">Jaa</a>
     </div>
@@ -121,23 +47,7 @@
     <div id="b8" class="cell" data-index="8"></div>
   </div>
 
-
-  <script>
-    var boxes = document.getElementsByClassName("cell");
-
-    for (var i = 0; i < boxes.length; i++) {
-      let current = boxes[i];
-      current.addEventListener('click', function () {
-        let content = this.textContent;
-        if (content === "" || content === "O") {
-          this.textContent = "X";
-        } else {
-          this.textContent = "O";
-        }
-      });
-    }
-  </script>
-
+  <script type="text/javascript" src="main.js"></script>
 </body>
 
 </html>
