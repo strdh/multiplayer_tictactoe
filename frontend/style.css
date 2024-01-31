@@ -93,6 +93,7 @@ body {
   cursor: pointer;
   background-color: #ffffff;
   border: 2px solid #388087;
+  border-radius: 0.3em;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
