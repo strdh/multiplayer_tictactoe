@@ -97,13 +97,39 @@ body {
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
+.btnExit {
+  border: 2px solid #FD7484;
+  background-color: #FD7484;;
+}
+
 .button:hover {
   background-color: #f6f6f2;
 }
 
-#btnGroup {
+.btnGroup {
   display: flex;
-  width: 95%;
+  width: 100%;
   background-color: #c2edce;
   margin: 0 auto;
+}
+
+.progress-container {
+  width: 100%;
+  height: 15px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background-color: #f4fd74;
+  transition: width 0.4s ease-in-out;
+}
+
+#timer {
+  color: #fd7474;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
 }
