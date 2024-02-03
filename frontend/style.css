@@ -17,9 +17,10 @@ body {
   margin-bottom: 1rem;
 }
 
-.home {
+.menu {
   border: 1px solid #388087;
   text-align: center;
+  width: 400px;
 }
 
 .conn {
@@ -132,4 +133,35 @@ body {
   width: 100%;
   font-size: 20px;
   text-align: center;
+}
+
+.txtin {
+  width: calc(100% - 10px);
+  border: 1px solid #c2edce;
+  box-sizing: border-box;
+  border-radius: 0.3em;
+  margin-bottom: 0.3em;
+  padding: 12px;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #c2edce;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  margin-bottom: 1em;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
