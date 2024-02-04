@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Playground</title>
 </head>
 
@@ -12,21 +12,21 @@
   <div class="info">
     <table class="scoreTable">
       <tr>
-        <td class="conn">connected</td>
+        <td id="user1_status" class="conn">connected</td>
         <td></td>
         <td></td>
         <td></td>
-        <td class="lostConn">lost connection</td>
+        <td id="user2_status" class="lostConn">lost connection</td>
       </tr>
       <tr>
-        <td class="score">username1</td>
-        <td class="scoreNum">0</td>
+        <td id="user1" class="score">username1</td>
+        <td id="user1_score" class="scoreNum">0</td>
         <td class="scoreNum">-</td>
-        <td class="scoreNum">5</td>
-        <td class="score">username2</td>
+        <td id="user2" class="scoreNum">5</td>
+        <td id="user2_score" class="score">username2</td>
       </tr>
       <tr>
-        <td class="score round" colspan="5">Round: <span>10</span></td>
+        <td class="score round" colspan="5">Round: <span id="score_round">10</span></td>
       </tr>
     </table>
     <div class="btnGroup">
@@ -38,7 +38,7 @@
       </div>
     </div>
     <div class="btnGroup">
-      <a class="button btnExit">Close</a>
+      <a id="pclose" class="button btnExit">Close</a>
     </div>
   </div>
 
