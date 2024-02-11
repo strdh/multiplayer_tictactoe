@@ -22,6 +22,8 @@ type Response struct {
 func main() {
 	usernameMap = map[string]struct{}{}
 	r := mux.NewRouter()
+	r.Use(corsOptions)
+
 	r.HandleFunc("/ttt/username/create", userCreateHandler).Methods("POST", "OPTIONS")
 
 	server := http.Server{
@@ -36,23 +38,36 @@ func main() {
 	}
 }
 
+
 func writeResponse(w http.ResponseWriter, r *http.Request, status int, data interface{}) {
 	w.Header().Set("Content-Type", "application/json")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
-
+	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
+	
 	response := Response{
 		Data: data,
 	}
-
+	
 	jsonData, err := json.Marshal(response)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
-
+	
 	w.WriteHeader(status)
 	w.Write(jsonData)
+}
+
+func corsOptions(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodOptions {
+			writeResponse(w, r, http.StatusOK, nil)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	})
 }
 
 func isValidUsername(username string) bool {
