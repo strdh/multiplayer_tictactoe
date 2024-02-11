@@ -9,8 +9,31 @@ uclose.addEventListener('click', function() {
 submitUsername.addEventListener('click', function() {
   const username = txtUsername.value;
   if (username && username != "") {
-    console.log(username);
-    // make request to the backend
+    const url = 'http://localhost:5000/ttt/username/create';
+    const data = {
+      username: username
+    };
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      console.log('Response Status Code:', response.status);
+      if (response.status === 200) {
+        txtUsername.value = "";
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.log('Error: ', error);
+    });
   } else {
     alert("username cannot be null");
   }
