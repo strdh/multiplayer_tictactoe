@@ -2,14 +2,25 @@ package main
 
 import (
 	"fmt"
+	"time"
 	"regexp"
-	"io/ioutil"
+	"context"
+	"strconv"
 	"net/http"
+	"io/ioutil"
 	"encoding/json"
 	"github.com/gorilla/mux"
 )
 
-var usernameMap map[string]struct{}
+type Room struct{
+	RoomId string
+	Username1 string
+	Username2 string
+	Username1Score int
+	Username2Score int
+	Round int
+	Status bool
+}
 
 type UsernameRequest struct{
 	Username string `json:"username"`
@@ -19,12 +30,18 @@ type Response struct {
 	Data interface{} `json:"data"`
 }
 
+var usernameMap map[string]struct{}
+var userStatus map[string]struct{}
+var roomMap map[string]Room
+var privateRoomMap map[string]Room
+
 func main() {
 	usernameMap = map[string]struct{}{}
 	r := mux.NewRouter()
 	r.Use(corsOptions)
 
 	r.HandleFunc("/ttt/username/create", userCreateHandler).Methods("POST", "OPTIONS")
+	r.HandleFunc("/ttt/room/join", joinRoomHandler).Methods("POST", "OPTIONS")
 
 	server := http.Server{
 		Addr: ":5000",
@@ -110,4 +127,47 @@ func userCreateHandler(w http.ResponseWriter, r *http.Request) {
 
 	usernameMap[request.Username] = struct{}{}
 	writeResponse(w, r, http.StatusOK, nil)
+}
+
+func randomMatchHandler(w http.ResponseWriter, r *http.Request) {
+	ctx, cancel := context.WithTimeout(r.Context(), 10 * time.Second)
+	defer cancel()
+
+	var isMatch bool
+
+	loop:
+	for {
+		select {
+		case <-ctx.Done():
+			http.Error(w, "Cannot find partner", http.StatusRequestTimeout)
+			return
+		default:
+			if match {
+				isMatch = true
+				break loop
+			}
+		}
+	}
+
+	if isMatch {
+		ulid := ulid.Make()
+		finalId := ulid.String()
+
+		playroom := Room{
+			RoomId: finalId,
+			Username1 string
+			Username2 string
+			Username1Score int
+			Username2Score int
+			Round int
+			Status bool
+		}
+		writeResponse(w, r, http.StatusOK)
+	} else {
+		writeResponse(w, r, http.StatusBadRequest)
+	}
+}
+
+func joinRoomHandler(w http.ResponseWriter, r *http.Request) {
+	
 }
